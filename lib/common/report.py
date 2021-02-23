@@ -186,8 +186,8 @@ def save_report(args, _q_results, _file, tasks_processed_count):
 
             logger.log('INFOR', '* %s vulnerable targets on sites in total.' % vulnerable_hosts_count)
             logger.log('INFOR', '* Scan report saved to report/%s' % report_name)
-            if no_browser:
-                webbrowser.open_new_tab('file:///' + os.path.abspath('report/%s' % report_name))
+            #if no_browser:
+            #    webbrowser.open_new_tab('file:///' + os.path.abspath('report/%s' % report_name))
         else:
             logger.log('INFOR', '* No vulnerabilities found on sites in %s.' % _file)
 
