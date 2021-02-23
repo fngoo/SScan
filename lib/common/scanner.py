@@ -147,6 +147,8 @@ class Scanner(object):
             # 403 bypass test
             if status == 403:
                 self.bypass_403(resp)
+            elif status == 401:
+                self.bypass_403(resp)
 
             # 502出现3次以上，排除该站点
             if status == 502:
@@ -231,7 +233,7 @@ class Scanner(object):
                 if OriginalUrl not in self.results:
                     self.results[OriginalUrl] = []
                 _ = {'status': resp.status_code, 'url': '%s%s' % (self.base_url, OriginalUrl),
-                     'title': '绕过payload: %s%s' % (self.base_url, url), 'vul_type': "403绕过"}
+                     'title': '绕过payload: %s%s' % (self.base_url, url), 'vul_type': "403401绕过"}
                 if _ not in self.results[OriginalUrl]:
                     self.results[OriginalUrl].append(_)
                 break
@@ -264,7 +266,7 @@ class Scanner(object):
                 if OriginalUrl not in self.results:
                     self.results[OriginalUrl] = []
                 _ = {'status': resp.status_code, 'url': '%s%s' % (self.base_url, OriginalUrl),
-                     'title': '绕过payload: %s%s, Header payload: %s' % (self.base_url, url, hp), 'vul_type': "403绕过"}
+                     'title': '绕过payload: %s%s, Header payload: %s' % (self.base_url, url, hp), 'vul_type': "403401绕过"}
                 if _ not in self.results[OriginalUrl]:
                     self.results[OriginalUrl].append(_)
                 # print(_)
